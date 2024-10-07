@@ -1,0 +1,98 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Status {
+  Selesai
+  Proses
+  Banding
+  Gagal
+}
+
+model User {
+  id  String @id @unique
+  name  String
+  email String  @unique
+  image String
+  saldo Int @default(0)
+  provider  String?
+  providerAccountId String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Transaction {
+  transactionId String  @id @unique
+  email String?
+  emailTo String?
+  name  String
+  description String?
+  adminAmount Int
+  amount Int
+  totalAmount Int
+  isPaid  Boolean @default(false)
+  isSendTo Boolean @default(false)
+  status  Status  @default(Proses)
+  statusTo  Status @default(Proses)
+  invoiceId String?
+  invoiceUrl  String?
+  expiryDate String?
+  attachment  Attachment[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Attachment {
+  attachmentId  String  @id @unique
+  transactionId String
+  email String
+  name  String
+  description String?
+  attachmentUrl String
+  transaction Transaction @relation(references: [transactionId], fields: [transactionId])
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Invoice {
+  invoiceId String  @id @unique
+  transactionId String
+  email String
+  amount  Int
+  adminAmount Int
+  totalAmount Int
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model adminAmount {
+  id  Int @id @default(autoincrement())
+  total Int
+  maximum Int
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Info {
+  id  Int @id @default(autoincrement())
+  title String
+  message String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Notification {
+  id  String @id @unique
+  title String
+  message String
+  from  String?
+  to  String?
+  transactionId String?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
