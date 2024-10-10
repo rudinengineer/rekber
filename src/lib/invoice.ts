@@ -35,7 +35,7 @@ export const CheckStatusInvoice = async (session: Session, transaction: Transact
                 await prisma.invoice.create({
                     data: {
                         invoiceId: checkInvoice.id as string,
-                        email: session?.user.email,
+                        email: String(session?.user.email),
                         transactionId: transaction.transactionId,
                         amount: transaction.amount,
                         adminAmount: transaction.amount,
