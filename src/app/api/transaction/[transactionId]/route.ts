@@ -15,20 +15,27 @@ export async function GET(req: Request, { params }: { params: { transactionId: s
             }
         })
 
-        if ( transaction?.email === session.user.email || transaction?.emailTo === session.user.email ) {
-            if ( transaction.invoiceId ) {
-                CheckStatusInvoice(session, transaction)
+        if ( transaction ) {
+            if ( transaction?.email === session.user.email || transaction?.emailTo === session.user.email ) {
+                if ( transaction.invoiceId ) {
+                    CheckStatusInvoice(session, transaction)
+                }
+    
+                return NextResponse.json({
+                    status: true,
+                    data: transaction
+                }, { status: 200 })
+            } else {
+                return NextResponse.json({
+                    status: false,
+                    message: '401 Unauthorized!'
+                }, { status: 401 })
             }
-
-            return NextResponse.json({
-                status: true,
-                data: transaction
-            }, { status: 200 })
         } else {
             return NextResponse.json({
                 status: false,
-                message: '401 Unauthorized!'
-            }, { status: 401 })
+                message: 'Transaction not found!'
+            }, { status: 404 })
         }
     } else {
         return NextResponse.json({
