@@ -3,7 +3,7 @@ import { DollarSign, CreditCard } from "lucide-react";
 import { Button } from "~/components/ui/button"
 import Link from 'next/link'
 import Layout from "~/layouts/Layout";
-import AlertInfo from '~/components/ui/card/alert-info'
+// import AlertInfo from '~/components/ui/card/alert-info'
 import ItemsCard from '~/components/ui/card/items-card'
 import React from "react";
 import RecentTransaction from "~/components/ui/card/recent-transaction";
@@ -12,7 +12,7 @@ export default function page() {
 
   return (
     <Layout>
-      <AlertInfo />
+      {/* <AlertInfo /> */}
 
       <ItemsCard />
 
