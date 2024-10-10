@@ -25,7 +25,7 @@ export default function RootLayout({
             defaultTheme="dark"
           >
             <div
-              className="w-full h-screen flex justify-center items-center"
+              className="w-full h-screen flex justify-center items-center overflow-x-hidden"
               >
                 <AuthProvider>
                   <ReactQueryProvider>

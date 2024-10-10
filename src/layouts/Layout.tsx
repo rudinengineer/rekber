@@ -26,9 +26,9 @@ export default function Layout({children}: Props) {
   const { status, data: session } = useSession()
 
   return (
-    <div className='p-7'>
-        <Card className="hidden-scrollbar py-6 w-[400px] max-w-[95vw] sm:max-w-0 max-h-[95vh] ss:max-h-[85vh] overflow-y-auto">
-            <CardContent className='w-full'>
+    <div className='p-7 overflow-x-hidden'>
+        <Card className="hidden-scrollbar py-6 w-[400px] max-w-[95vw] sm:max-w-0 max-h-[95vh] ss:max-h-[85vh] overflow-y-auto overflow-x-hidden">
+            <CardContent className='w-full overflow-x-hidden'>
                 <div className='w-full flex justify-between items-center'>
                     <h1 className='text-xl font-semibold'>{ appName }</h1>
                     <DropdownMenu>
@@ -58,7 +58,7 @@ export default function Layout({children}: Props) {
                     </DropdownMenuContent>
                     </DropdownMenu>
                 </div>
-                <div className='w-full mt-3 flex gap-4 items-center'>
+                <div className='w-full mt-3 flex gap-4 items-center overflow-x-hidden'>
                     <Link
                         href="/"
                         className="text-foreground transition-colors hover:text-foreground"
