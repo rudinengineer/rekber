@@ -55,7 +55,7 @@ export default function TransactionDetailAction({transaction}: Props) {
             <Skeleton className="mt-2 w-full h-10" />
         </div>
     ) : (
-        status === 'authenticated' && (
+        (status === 'authenticated' && session?.user) && (
             <div>
                 {
                     (session?.user.email === transaction.email && !transaction.isPaid && transaction.invoiceUrl) && (
