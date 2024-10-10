@@ -38,7 +38,7 @@ export default function Layout({children}: Props) {
                                 status === 'loading' ? (
                                     <Skeleton className='size-5 rounded-full' />
                                 ) : (
-                                    status === 'authenticated' && (
+                                    (status === 'authenticated' && session?.user) && (
                                         <Image
                                             src={String(session?.user.image)}
                                             alt={String(session?.user.name)}
