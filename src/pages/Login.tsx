@@ -17,7 +17,6 @@ import Footer from '~/components/ui/puzzle/footer';
 
 export default function Login() {
   const router = useRouter()
-  const { data: session } = useSession()
   const { toast } = useToast()
   const [loading, setLoading] = React.useState<boolean>(false)
 
@@ -25,9 +24,6 @@ export default function Login() {
     setLoading(true)
     try {
         const response = await signIn("google")
-
-        console.log(response)
-        console.log(session)
 
         if ( response?.ok ) {
             router.refresh()

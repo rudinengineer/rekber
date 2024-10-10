@@ -12,7 +12,7 @@ type Props = {
     }
 }
 
-export default function page({params}: Props) {
+export default function Page({params}: Props) {
   useQuery({
     queryKey: ['update-status-transaction'],
     queryFn: async () => {

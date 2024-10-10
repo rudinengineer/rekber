@@ -44,11 +44,8 @@ import {
   TableHeader,
   TableRow,
 } from "~/components/ui/table"
-import { useSession } from "next-auth/react"
-import Image from "next/image"
 
 export default function Homes() {
-  const { status, data: session } = useSession()
 
   return (
     <div className="flex min-h-screen w-full flex-col">

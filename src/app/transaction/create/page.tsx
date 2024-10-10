@@ -28,7 +28,7 @@ const schema = yup
   })
   .required()
 
-export default function page({}: Props) {
+export default function Page({}: Props) {
   const router = useRouter()
   const { toast } = useToast()
   const ref: any = React.useRef()

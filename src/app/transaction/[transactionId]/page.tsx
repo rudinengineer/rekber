@@ -26,7 +26,7 @@ type Props = {
     }
 }
 
-export default function page({params}: Props) {
+export default function Page({params}: Props) {
   const { toast } = useToast()
 
   const { isLoading, isSuccess, data: transaction } = useQuery({
