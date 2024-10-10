@@ -2,10 +2,9 @@ import prisma from "./prisma"
 import { Transaction } from "@prisma/client"
 import { xenditClient } from "~/lib/xendit";
 import { Invoice } from 'xendit-node/invoice/models'
-import { Session } from "next-auth";
 import { v4 as uuidv4 } from 'uuid'
 
-export const CheckStatusInvoice = async (session: Session, transaction: Transaction) => {
+export const CheckStatusInvoice = async (session: any, transaction: Transaction) => {
     const checkInvoice: Invoice = await xenditClient.Invoice.getInvoiceById({
         invoiceId: transaction.invoiceId as string
     })
