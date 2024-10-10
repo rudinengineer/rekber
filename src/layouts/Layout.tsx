@@ -79,7 +79,7 @@ export default function Layout({children}: Props) {
                     </Link>
                 </div>
 
-                <div className='w-full mt-6'>
+                <div className='w-full mt-6 p-4 sm:p-0'>
                     { children }
                 </div>
             </CardContent>
