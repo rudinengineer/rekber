@@ -27,7 +27,7 @@ export default function Layout({children}: Props) {
 
   return (
     <div className='p-7'>
-        <Card className="hidden-scrollbar py-6 w-[400px] max-h-[95vh] ss:max-h-[85vh] overflow-y-auto">
+        <Card className="hidden-scrollbar py-6 w-[400px] max-w-[95vw] sm:max-w-0 max-h-[95vh] ss:max-h-[85vh] overflow-y-auto">
             <CardContent className='w-full'>
                 <div className='w-full flex justify-between items-center'>
                     <h1 className='text-xl font-semibold'>{ appName }</h1>
@@ -79,7 +79,7 @@ export default function Layout({children}: Props) {
                     </Link>
                 </div>
 
-                <div className='w-full mt-6 p-4 sm:p-0'>
+                <div className='w-full mt-6'>
                     { children }
                 </div>
             </CardContent>
