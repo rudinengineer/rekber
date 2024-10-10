@@ -4,7 +4,7 @@ import { authOptions } from "~/lib/auth";
 import prisma from "~/lib/prisma";
 
 export async function GET() {
-    const session = await getServerSession(authOptions)
+    const session: any = await getServerSession(authOptions)
 
     if ( session?.user ) {
         const response = await prisma.user.findFirst({
