@@ -19,6 +19,7 @@ import TransactionDetailSkeleton from "~/components/ui/skeleton/transaction-deta
 import TransactionDetailAction from "~/components/ui/puzzle/transaction-detail-action";
 import { useToast } from '~/hooks/use-toast'
 import copy from 'clipboard-copy';
+import TransactionAddPeople from '~/components/ui/modal/transaction-add-people';
 
 type Props = {
     params: {
@@ -185,8 +186,11 @@ export default function Page({params}: Props) {
                                 <dt className="text-muted-foreground">Email</dt>
                                 <dd>
                                 <dd>{
-                                    transaction.emailTo ?? (
-                                        <Button>Tambah penjual</Button>
+                                    transaction.emailTo ? transaction.emailTo : (
+                                        <TransactionAddPeople
+                                            label="penjual"
+                                            url={`/join?via=${transaction.transactionId}`}
+                                        />
                                     )
                                 }</dd>
                                 </dd>
@@ -219,8 +223,11 @@ export default function Page({params}: Props) {
                                 <dt className="text-muted-foreground">Email</dt>
                                 <dd>
                                 <dd>{
-                                    transaction.email ?? (
-                                        <Button>Tambah pembeli</Button>
+                                    transaction.email ? transaction.email : (
+                                        <TransactionAddPeople
+                                            label='pembeli'
+                                            url={`/join?via=${transaction.transactionId}`}
+                                        />
                                     )
                                 }</dd>
                                 </dd>
